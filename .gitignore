@@ -1,0 +1,21 @@
+# NetWatch runtime output — these contain YOUR traffic and MUST NOT be committed.
+data/
+reports/
+*.etl
+*.pcapng
+*.pcap
+
+# Per-machine configuration (start from config.example.json)
+config.json
+
+# Evidence bundles produced by the collector
+*.zip
+
+# Logs / temp
+*.log
+*.tmp
+
+# OS noise
+Thumbs.db
+Desktop.ini
+.DS_Store

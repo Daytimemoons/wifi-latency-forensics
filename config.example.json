@@ -1,0 +1,61 @@
+{
+  "_readme": "Optional. Copy to config.json and edit. Every key is optional: anything omitted falls back to the built-in defaults in scripts/NetWatch.Config.ps1.",
+  "_note_targets": "An empty host means auto-detect at runtime: 'gateway' uses the default gateway, 'local-dns' uses the host's DNS server.",
+
+  "DurationMinutes": 20,
+  "MaxDurationMinutes": 120,
+  "MaxDataMB": 300,
+  "PktmonMaxMB": 64,
+  "MaxGlobalDataMB": 2048,
+  "KeepRuns": 6,
+  "MinFreeDiskGB": 3,
+  "MaxIncidents": 10,
+  "MaxIncidentDirMB": 40,
+  "MaxRowsPerFile": 400000,
+
+  "IcmpIntervalSec": 1,
+  "BurstIcmpIntervalSec": 0.25,
+  "BurstSeconds": 60,
+  "WifiIntervalSec": 5,
+  "NeighborScanSec": 120,
+  "DnsIntervalSec": 15,
+  "L7IntervalSec": 30,
+  "SysIntervalSec": 10,
+  "ProcIntervalSec": 15,
+  "EventIntervalSec": 5,
+  "ProxyCheckSec": 10,
+
+  "EnablePktmon": true,
+  "EnableNeighborScan": true,
+  "EnableProxyProbe": true,
+  "EnableL7Probe": true,
+  "EnableEventLog": true,
+  "EnableProcessProbe": true,
+  "EventLookbackMinutes": 30,
+  "IncidentCooldownSec": 180,
+  "OpenReportOnFinish": false,
+  "IncludePcapInZip": false,
+
+  "WlanInterface": "WLAN",
+  "GatewayHost": "",
+
+  "IcmpTargets": [
+    { "name": "gateway",       "host": "",                       "layer": "L2/L3 本地网关", "warn": 50,  "crit": 150 },
+    { "name": "local-dns",     "host": "",                       "layer": "内网 DNS",       "warn": 100, "crit": 300 },
+    { "name": "cloudflare",    "host": "1.1.1.1",                "layer": "公网 IPv4",      "warn": 80,  "crit": 300 },
+    { "name": "alidns",        "host": "223.5.5.5",              "layer": "公网 IPv4",      "warn": 80,  "crit": 300 },
+    { "name": "google-dns",    "host": "8.8.8.8",                "layer": "公网 IPv4 海外", "warn": 250, "crit": 800 },
+    { "name": "quad9",         "host": "9.9.9.9",                "layer": "公网 IPv4",      "warn": 80,  "crit": 300 },
+    { "name": "cloudflare-v6", "host": "2606:4700:4700::1111",   "layer": "公网 IPv6",      "warn": 100, "crit": 400 }
+  ],
+
+  "DnsNames": ["www.microsoft.com", "www.cloudflare.com", "www.apple.com"],
+  "DnsServers": ["1.1.1.1"],
+
+  "ProxyPort": 0,
+  "L7Targets": [
+    { "name": "gstatic-204", "url": "https://www.gstatic.com/generate_204", "layer": "L7 海外" },
+    { "name": "baidu",       "url": "https://www.baidu.com/",               "layer": "L7 国内" }
+  ],
+  "L7TimeoutSec": 8
+}
